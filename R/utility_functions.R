@@ -31,10 +31,12 @@ data_frame_select<-function(input_df,start_date,end_date,num_var,rem_dups=FALSE)
 
 # sort input dataframe by Date column
 # Precondition: timeseries is a dataframe with a column DATE_ID and a column TOTAL (numeric)
+
 #' @title sort data frame by date
 #' @name sort_data_frame_by_date
 #' @description sort data frame by date
 #' @author Ilana Lichtenstein
+#' @param DATE_ID date
 #' @export 
 sort_data_frame_by_date<-function(DATE_ID_original,actuals_original){
   partial<-data.frame(DATE_ID_original,actuals_original,row.names=NULL)
