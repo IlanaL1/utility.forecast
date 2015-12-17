@@ -29,6 +29,15 @@ data_frame_select<-function(input_df,start_date,end_date,num_var,rem_dups=FALSE)
 #  VAR3=if(num_var>=3) {B_subset$X3} else{c(rep(NA,nrow(B_subset)))}
 #)
 
+# sort input dataframe by Date column
+# Precondition: timeseries is a dataframe with a column DATE_ID and a column TOTAL (numeric)
+sort_data_frame_by_date<-function(DATE_ID_original,actuals_original){
+  partial<-data.frame(DATE_ID_original,actuals_original,row.names=NULL)
+  colnames(partial)<-c("date","value")
+  sorted_partial<-partial[order(as.Date(partial$date, format="%d/%m/%Y")),]  
+  list(date=sorted_partial$date,value=sorted_partial$value)
+}
+
 #' @name get_train_start_end
 #' @title gets start and end dates for input dates
 #' @description Get start and end dates for input period (typically a training period)
