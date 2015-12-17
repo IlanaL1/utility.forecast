@@ -35,8 +35,7 @@ data_frame_select<-function(input_df,start_date,end_date,num_var,rem_dups=FALSE)
 #' @name sort_data_frame_by_date
 #' @description sort data frame by date
 #' @author Ilana Lichtenstein
-#' @export
-#' 
+#' @export 
 sort_data_frame_by_date<-function(DATE_ID_original,actuals_original){
   partial<-data.frame(DATE_ID_original,actuals_original,row.names=NULL)
   colnames(partial)<-c("date","value")
@@ -117,12 +116,12 @@ Mean_APE_function<-function(actual_values,forecast_values){
 
 # sort input dataframe by Date column
 # Precondition: timeseries is a dataframe with a column DATE_ID and a column TOTAL (numeric)
-sort_data_frame_by_date<-function(DATE_ID_original,actuals_original){
-  partial<-data.frame(DATE_ID_original,actuals_original,row.names=NULL)
-  colnames(partial)<-c("date","value")
-  sorted_partial<-partial[order(as.Date(partial$date, format="%d/%m/%Y")),]  
-  list(date=sorted_partial$date,value=sorted_partial$value)
-}
+#sort_data_frame_by_date<-function(DATE_ID_original,actuals_original){
+#  partial<-data.frame(DATE_ID_original,actuals_original,row.names=NULL)
+#  colnames(partial)<-c("date","value")
+#  sorted_partial<-partial[order(as.Date(partial$date, format="%d/%m/%Y")),]  
+#  list(date=sorted_partial$date,value=sorted_partial$value)
+#}
 
 # Smooth data
 # Function: calc_mean_indices - smoothing function
