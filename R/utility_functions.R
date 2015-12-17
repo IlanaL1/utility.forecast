@@ -131,6 +131,10 @@ Mean_APE_function<-function(actual_values,forecast_values){
 
 # guess likely time step difference in observations 
 # http://stackoverflow.com/questions/19217729/check-the-frequency-of-time-series-data?rq=1
+
+#' @name guess_period
+#' @title Estimate spacing between date points
+#' @export
 guess_period <- function(x) { 
   #average_period <- as.double( mean(diff(x$date)), units="days" )
   #average_period <- as.double( mean(diff(index(x))), units="days" )
@@ -148,9 +152,15 @@ guess_period <- function(x) {
   which.min( difference ) 
 }
 
+#' @name is.wholenumber
+#' @title fill in later
+#' @export
 is.wholenumber <-
   function(x, tol = .Machine$double.eps^0.5)  abs(x - round(x)) < tol
 
+#' @name type_to_descrip
+#' @title Convert spacing type to a description 
+#' @export
 type_to_descrip<-function(spacing_type)
 {
   switch(spacing_type,
@@ -162,6 +172,9 @@ type_to_descrip<-function(spacing_type)
          "6" = "years")
 }
 
+#' @name type_to_annual_freq
+#' @title convert type to annual frequency
+#' @export
 type_to_annual_freq<-function(spacing_type)
 {
   switch(spacing_type,
@@ -172,6 +185,10 @@ type_to_annual_freq<-function(spacing_type)
          "5" = 4,
          "6" = 1)
 }
+
+#' @name type_to_short_freq
+#' @title Convert type to short frequency
+#' @export
 type_to_short_freq<-function(spacing_type)
 {
   switch(spacing_type,
@@ -182,7 +199,7 @@ type_to_short_freq<-function(spacing_type)
 #' @name checkXreg
 #' @title Check validity of input variables
 #' @description Returns error flags indicating if there is an error in xreg and new_xreg
-
+#' @export
 checkXreg<-function(xreg_select_no_dups,new_xreg_select_no_dups,DATE_ID,horiz_dates){
     
   # set default values for diagnostic flags
